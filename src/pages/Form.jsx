@@ -24,10 +24,9 @@ function Form() {
 
   const handleFaceContent = async (faceId) => {
     try {
-        
       const response = await databases.createDocument(
         process.env.REACT_APP_APPWRITE_DATABASE_ID,
-        process.env.REACT_APP_APPWRITE_COLLECTION_ID,
+        process.env.REACT_APP_APPWRITE_FACES_COLLECTION_ID,
         ID.unique(),
         {
           title: title,
