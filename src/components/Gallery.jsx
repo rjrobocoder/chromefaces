@@ -1,8 +1,7 @@
-import React, { useState } from "react";
+import React from "react";
 import downloadIcon from "../images/downloads.png";
 
 const Gallery = ({ facelist }) => {
-  const [faces, setFaces] = useState(facelist);
 
   console.log("🍅", facelist);
   return (
