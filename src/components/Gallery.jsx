@@ -1,44 +1,10 @@
-import React from "react";
+import React, { useState } from "react";
 import downloadIcon from "../images/downloads.png";
 
-const Gallery = () => {
-  const cards = [
-    {
-      face: "test",
-      title: "test",
-      downloads: 4,
-    },
-    {
-      face: "test",
-      title: "test",
-      downloads: 4,
-    },
-    {
-      face: "test",
-      title: "test",
-      downloads: 4,
-    },
-    {
-      face: "test",
-      title: "test",
-      downloads: 4,
-    },
-    {
-      face: "test",
-      title: "test",
-      downloads: 4,
-    },
-    {
-      face: "test",
-      title: "test",
-      downloads: 4,
-    },
-    {
-      face: "test",
-      title: "test",
-      downloads: 4,
-    },
-  ];
+const Gallery = ({ facelist }) => {
+  const [faces, setFaces] = useState(facelist);
+
+  console.log("🍅", facelist);
   return (
     <section>
       <div className="h-[60px] w-full my-4 flex items-center justify-between px-6">
@@ -64,12 +30,21 @@ const Gallery = () => {
         </div>
       </div>
       <div className="w-full grid 2xl:grid-cols-5 xl:grid-cols-4 lg:grid-cols-3 sm:grid-cols-2 gap-x-[60px] gap-y-[38px]">
-        {cards?.map((card, i) => {
+        {facelist?.map((face, i) => {
           return (
             <div key={i} className="">
-              <div className="w-full h-[196px] rounded-[9px] bg-black"></div>
+              <div className="w-full h-[196px] rounded-[9px] bg-gray-200 border border-gray-300 flex items-center justify-center overflow-hidden">
+                <img
+                  className="max-h-[196px]"
+                  src={
+                    process.env.REACT_APP_APPWRITE_API_ENDPOINT +
+                    `/storage/buckets/${process.env.REACT_APP_APPWRITE_FACES_BUCKET_ID}/files/${face?.face_id}/preview?project=chromefaces`
+                  }
+                  alt="face"
+                />
+              </div>
               <div className="py-2 flex items-center justify-between pr-1">
-                <h1>Generated with Autodesign</h1>
+                <h1>{face?.title}</h1>
                 <div className="flex items-baseline gap-1">
                   <span>9K</span>
                   <div>
